@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pizza Live - Order Now</title>
+
+<style>
+body{margin:0;font-family:Arial;background:#fff8f0;}
+header{background:#b71c1c;color:white;text-align:center;padding:20px;}
+.section{padding:20px;text-align:center;}
+.menu-container{display:flex;flex-wrap:wrap;justify-content:center;}
+.item{
+background:white;width:250px;margin:15px;padding:15px;
+border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,0.2);
+transition:0.3s;}
+.item:hover{transform:scale(1.05);}
+.item img{width:100%;border-radius:10px;}
+.price{color:green;font-weight:bold;}
+button{
+background:#ff9800;color:white;border:none;
+padding:10px 15px;border-radius:20px;cursor:pointer;margin-top:10px;}
+button:hover{background:#e65100;}
+.order-form{
+background:white;padding:20px;margin:20px;
+border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,0.2);}
+input, select{
+width:90%;padding:10px;margin:10px;
+border-radius:8px;border:1px solid #ccc;}
+.footer{background:#b71c1c;color:white;text-align:center;padding:15px;}
+.whatsapp{
+position:fixed;bottom:20px;right:20px;
+background:#25D366;color:white;padding:15px;
+border-radius:50%;font-size:20px;text-decoration:none;}
+.call{
+position:fixed;bottom:80px;right:20px;
+background:#2196F3;color:white;padding:15px;
+border-radius:50%;font-size:20px;text-decoration:none;}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🍕 Pizza Live</h1>
+<p>Free Delivery within 2KM | Min Order ₹200</p>
+</header>
+
+<div class="section">
+<h2>🍕 Pizza</h2>
+<div class="menu-container">
+
+<div class="item">
+<img src="https://images.unsplash.com/photo-1601924928376-47a7a69e4a43">
+<h3>Onion Pizza</h3>
+<p class="price">₹79 / ₹99</p>
+<button onclick="orderItem('Onion Pizza')">Order</button>
+</div>
+
+<div class="item">
+<img src="https://images.unsplash.com/photo-1548365328-9f547fb0953a">
+<h3>Paneer Cheese Pizza</h3>
+<p class="price">₹99</p>
+<button onclick="orderItem('Paneer Cheese Pizza')">Order</button>
+</div>
+
+</div>
+</div>
+
+<div class="section">
+<h2>🍔 Burger</h2>
+<div class="menu-container">
+
+<div class="item">
+<img src="https://images.unsplash.com/photo-1550547660-d9450f859349">
+<h3>Veg Grill Burger</h3>
+<p class="price">₹29</p>
+<button onclick="orderItem('Veg Grill Burger')">Order</button>
+</div>
+
+</div>
+</div>
+
+<div class="section">
+<h2>🥪 Sandwich</h2>
+<div class="menu-container">
+
+<div class="item">
+<img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d">
+<h3>Veg Grill Sandwich</h3>
+<p class="price">₹39</p>
+<button onclick="orderItem('Veg Grill Sandwich')">Order</button>
+</div>
+
+</div>
+</div>
+
+<div class="section order-form">
+<h2>🛒 Place Order</h2>
+<input type="text" id="name" placeholder="Your Name">
+<input type="text" id="phone" placeholder="Mobile Number">
+<select id="food">
+<option>Select Item</option>
+<option>Onion Pizza</option>
+<option>Paneer Cheese Pizza</option>
+<option>Veg Grill Burger</option>
+<option>Veg Grill Sandwich</option>
+</select>
+<button onclick="submitOrder()">Submit Order</button>
+</div>
+
+<div class="section">
+<h2>💳 Scan & Pay</h2>
+<p>Scan QR and send screenshot on WhatsApp</p>
+<img src="your-qr-image.jpg" width="250" 
+style="border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,0.3);">
+<br><br>
+
+<a href="upi://pay?pa=yourupi@upi&pn=PizzaLive&cu=INR"
+style="background:#4CAF50;color:white;padding:12px 20px;border-radius:25px;text-decoration:none;">
+Pay via UPI
+</a>
+<br><br>
+
+<a href="https://wa.me/918700893970" target="_blank"
+style="background:#25D366;color:white;padding:10px 20px;border-radius:20px;text-decoration:none;">
+Send Payment Screenshot
+</a>
+</div>
+
+<div class="footer">
+📍 Sharfuddinpur Near TVS Agency  
+📞 8700893970  
+</div>
+
+<a class="whatsapp" href="https://wa.me/918700893970" target="_blank">🟢</a>
+<a class="call" href="tel:8700893970">📞</a>
+
+<script>
+function orderItem(item){
+document.getElementById("food").value = item;
+window.scrollTo(0,document.body.scrollHeight);
+}
+
+function submitOrder(){
+var name=document.getElementById("name").value;
+var phone=document.getElementById("phone").value;
+var food=document.getElementById("food").value;
+
+if(name=="" || phone=="" || food=="Select Item"){
+alert("Please fill all details");
+}else{
+var message="New Order:%0AName: "+name+
+"%0APhone: "+phone+
+"%0AItem: "+food;
+
+window.open("https://wa.me/918700893970?text="+message);
+}
+}
+</script>
+
+</body>
+</html>
