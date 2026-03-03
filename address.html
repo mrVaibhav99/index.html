@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Address - Pizza Live</title>
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#111;
+    color:white;
+    text-align:center;
+}
+header{
+    background:#ff4d00;
+    padding:20px;
+    font-size:24px;
+    font-weight:bold;
+}
+.container{
+    padding:40px 20px;
+}
+input, textarea{
+    width:90%;
+    padding:12px;
+    margin:10px 0;
+    border-radius:8px;
+    border:none;
+}
+button{
+    background:#ff4d00;
+    color:white;
+    padding:12px 25px;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+}
+button:hover{
+    background:#e04300;
+}
+</style>
+</head>
+<body>
+
+<header>📍 Enter Delivery Address</header>
+
+<div class="container">
+<input type="text" id="fullname" placeholder="Full Name">
+<input type="text" id="phone" placeholder="Mobile Number">
+<textarea id="address" placeholder="Full Delivery Address" rows="4"></textarea>
+<input type="text" id="pincode" placeholder="Pincode">
+
+<button onclick="sendAddress()">Save Address</button>
+</div>
+
+<script>
+function sendAddress(){
+var name=document.getElementById("fullname").value;
+var phone=document.getElementById("phone").value;
+var address=document.getElementById("address").value;
+var pincode=document.getElementById("pincode").value;
+
+if(name=="" || phone=="" || address=="" || pincode==""){
+alert("Please fill all details");
+}else{
+alert("Address Saved Successfully!");
+}
+}
+</script>
+
+</body>
+</html>
