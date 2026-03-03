@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Store</title>
+
+<style>
+body { font-family: Arial; margin:0; background:#f4f4f4; text-align:center; }
+header { background:#111; color:white; padding:15px; font-size:22px; }
+.container { padding:20px; }
+
+.product {
+    background:white;
+    padding:15px;
+    margin:15px auto;
+    width:300px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.product img { width:100%; border-radius:10px; }
+
+button {
+    padding:10px 20px;
+    margin:5px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.add { background:#007bff; color:white; }
+.order { background:#25D366; color:white; }
+
+#cartBox {
+    background:white;
+    padding:15px;
+    margin:20px auto;
+    width:300px;
+    border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>My Online Store</header>
+
+<div class="container">
+
+<div class="product">
+<h3>Product 1</h3>
+<img src="product.jpg">
+<p>Price: ₹499</p>
+<button class="add" onclick="addToCart('Product 1',499)">Add to Cart</button>
+</div>
+
+<div id="cartBox">
+<h3>Cart</h3>
+<p id="cartItems">No items</p>
+<button class="order" onclick="placeOrder()">Place Order</button>
+</div>
+
+</div>
+
+<script>
+let cart = [];
+
+function addToCart(name, price){
+    cart.push({name, price});
+    displayCart();
+}
+
+function displayCart(){
+    if(cart.length === 0){
+        document.getElementById("cartItems").innerHTML = "No items";
+        return;
+    }
+
+    let total = 0;
+    let text = "";
+
+    cart.forEach(item => {
+        text += item.name + " - ₹" + item.price + "<br>";
+        total += item.price;
+    });
+
+    text += "<br><b>Total: ₹" + total + "</b>";
+    document.getElementById("cartItems").innerHTML = text;
+}
+
+function placeOrder(){
+    if(cart.length === 0){
+        alert("Cart is empty!");
+        return;
+    }
+
+    let message = "New Order:%0A";
+    let total = 0;
+
+    cart.forEach(item => {
+        message += item.name + " - ₹" + item.price + "%0A";
+        total += item.price;
+    });
+
+    message += "%0ATotal: ₹" + total;
+
+    window.open("https://wa.me/91XXXXXXXXXX?text=" + message, "_blank");
+}
+</script>
+
+</body>
+</html>
